@@ -1,6 +1,5 @@
 from typing import List
 
-
 class SearchMatrix:
 
     def binarySearch(self, arr: List[int], l: int, r: int, x: int) -> int:
@@ -10,7 +9,6 @@ class SearchMatrix:
             # 元素整好的中间位置
             if arr[mid] == x:
                 return mid
-
                 # 元素小于中间位置的元素，只需要再比较左边的元素
             elif arr[mid] > x:
                 return self.binarySearch(arr, l, mid - 1, x)
@@ -27,9 +25,12 @@ class SearchMatrix:
         n: int = len(matrix)
         m: int = len(matrix[0])
         mid = self.binarySearch(matrix[n - 1], 0, m - 1, target)
+        #大于最大值
         if (mid >= m):
             return 0
+        #大于目标值的右边的所有都需要遍历一遍
         while mid < m:
+            #找到目标值
             if (matrix[n - 1][mid] == target):
                 return 1
             b = [x[mid] for x in matrix]
